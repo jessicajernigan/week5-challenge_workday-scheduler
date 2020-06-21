@@ -4,8 +4,18 @@
 // WHEN I open the planner
 // THEN the current day is displayed at the top of the calendar
 // 1. Add div that displays current date according to user's timezone.
+// WHEN I scroll down
+// THEN I am presented with time blocks for standard business hours
+// 2. Hardcode 8am - 5pm?
 
-var displayDate = function() {
+// WHEN I view the time blocks for that day
+// THEN each time block is color-coded to indicate whether it is in the past, present, or future
+// 3. Hour that reflects current time is highlighted using '.present' class; past using '.past'; future using '.future' class
+// WHEN I click into a time block
+// THEN I can enter an event
+// 4. Text field
+
+var displayDate = function () {
   var prettyDate = moment().format("[Today is] dddd, MMMM Do YYYY, Ha");
   moment(prettyDate).toString;
   // console.log(prettyDate);
@@ -13,38 +23,27 @@ var displayDate = function() {
   todayDiv.text(prettyDate);
 };
 
-// WHEN I scroll down
-// THEN I am presented with time blocks for standard business hours
-// 2. Hardcode 8am - 5pm?
+ 
+var colorChange = function () {
+  $(".hour").each(function (_index, element) { 
+    var calendarHrString = $(this).attr('id');
+    var currentHrString = moment().format("H");
 
-// WHEN I view the time blocks for that day
-// THEN each time block is color-coded to indicate whether it is in the past, present, or future
-// 3. Hour that reflects current time is highlighted using '.present' class; past using '.past'; future using '.future' class 
+    calendarHr = parseInt(calendarHrString);
+    currentHr = parseInt(currentHrString);
 
-var colorChange = function(taskEl) {
-  var calendarHrString = $(".hour").attr('id'); 
-  var currentHrString = moment().format("H");
+    console.log({calendarHr, currentHr});
 
-  calendarHr = parseInt(calendarHrString);
-  currentHr = parseInt(currentHrString);
-
-  if (currentHr > calendarHr) {
-     $("textarea").addClass("past")
-  } else if (currentHr === calendarHr) {
-    $("textarea").addClass("present")
-  } else {
-    $("textarea").addClass("future")
-  }
+    if (currentHr > calendarHr) {
+      $(element).siblings("textarea").addClass("past")
+    } else if (currentHr === calendarHr) {
+      $(element).siblings("textarea").addClass("present")
+    } else {
+      $(element).siblings("textarea").addClass("future")
+    }
+  })
 };
 
-
-
-
-
-
-// WHEN I click into a time block
-// THEN I can enter an event
-// 4. Text field
 
 // WHEN I click the save button for that time block
 // 5. Save commits change to local storage using hr ID as key, text content as text.
@@ -102,29 +101,8 @@ var colorChange = function(taskEl) {
 // });
 
 
-// 
-// var auditTask = function (taskEl) {
 
-//   // Get date from task element.
-//   var date = $(taskEl).find("span")
-//     .text()
-//     .trim();
-
-//   // Convert to moment object at 5:00pm
-//   var time = moment(date, "L").set("hour", 17);
-
-//   $(taskEl).removeClass("list-group-item-warning list-group-item-danger");
-
-//   if (moment().isAfter(time)) {
-//     $(taskEl).addClass("list-group-item-danger");
-//   }
-//   else if (Math.abs(moment().diff(time, "days")) <= 2) {
-//     $(taskEl).addClass("list-group-item-warning");
-//   }
-//   console.log(taskEl);
-// };
 
 // RUN FUNCTIONS
-
 displayDate();
 colorChange();
