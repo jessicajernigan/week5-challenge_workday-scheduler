@@ -4,7 +4,7 @@ body {
   line-height: 1;
 }
 
-textarea{
+textarea {
   background: transparent;
   border: none;
   resize: none;
@@ -21,11 +21,11 @@ textarea{
   border-bottom: 10px solid black;
 }
 
-.description{
+.description {
   white-space: pre-wrap;
 }
 
-.time-block{
+.time-block {
   text-align: center;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
@@ -34,7 +34,9 @@ textarea{
 .row {
   white-space: pre-wrap;
   height: 80px;
-  border-top: 1px solid white;;
+  border-top: 1px solid white;
+  margin-top: 5px;
+  align-content: center;
 }
 
 .hour {
@@ -68,9 +70,31 @@ textarea{
   color: white;
   padding: 10px 10px 0px 0px;
   font-size: 1.2em;
+  margin-top: 2px;
 }
 
 .saveBtn i:hover {
   font-size: 20px;
   transition: all .3s ease-in-out;
+}
+
+@media (max-width: 767.98px) {
+  .row {
+    justify-content: center;
+  }
+  .hour {
+    display: block;
+    border-radius: 15px;
+  }
+  .time-block {
+    align-content: center;
+  }
+  .saveBtn {
+    padding: 0px;
+    width: 50%;
+    border-radius: 15px;
+    align-items: center;
+    font-size: 1.5em;
+  }
+
 }
