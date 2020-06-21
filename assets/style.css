@@ -15,6 +15,7 @@ textarea {
 
 .jumbotron {
   text-align: center;
+  justify-content: center;
   background-color: transparent;
   color: black;
   border-radius: 0;
@@ -77,6 +78,21 @@ textarea {
   font-size: 20px;
   transition: all .3s ease-in-out;
 }
+
+.today {
+  padding: 15px;
+  border-radius: 15px;
+  border: outset silver 3px;
+  max-width: 30%;
+  display: inline-block;
+  background-color: paleturquoise;
+  color: rgb(109, 109, 109);
+  font-weight: bold;
+}
+
+
+
+
 
 @media (max-width: 767.98px) {
   .row {

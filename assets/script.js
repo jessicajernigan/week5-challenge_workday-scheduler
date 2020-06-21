@@ -5,6 +5,14 @@
 // THEN the current day is displayed at the top of the calendar
 // 1. Add div that displays current date according to user's timezone.
 
+var displayDate = function() {
+  var prettyDate = moment().format("[Today is] dddd, MMMM Do YYYY, Ha");
+  moment(prettyDate).toString;
+  // console.log(prettyDate);
+  var todayDiv = $("#currentDay");
+  todayDiv.text(prettyDate);
+};
+
 // WHEN I scroll down
 // THEN I am presented with time blocks for standard business hours
 // 2. Hardcode 8am - 5pm?
@@ -12,6 +20,26 @@
 // WHEN I view the time blocks for that day
 // THEN each time block is color-coded to indicate whether it is in the past, present, or future
 // 3. Hour that reflects current time is highlighted using '.present' class; past using '.past'; future using '.future' class 
+
+var colorChange = function(taskEl) {
+  var calendarHrString = $(".hour").attr('id'); 
+  var currentHrString = moment().format("H");
+
+  calendarHr = parseInt(calendarHrString);
+  currentHr = parseInt(currentHrString);
+
+  if (currentHr > calendarHr) {
+     $("textarea").addClass("past")
+  } else if (currentHr === calendarHr) {
+    $("textarea").addClass("present")
+  } else {
+    $("textarea").addClass("future")
+  }
+};
+
+
+
+
 
 
 // WHEN I click into a time block
@@ -95,3 +123,8 @@
 //   }
 //   console.log(taskEl);
 // };
+
+// RUN FUNCTIONS
+
+displayDate();
+colorChange();
