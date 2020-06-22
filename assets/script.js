@@ -1,3 +1,4 @@
+/* Function to display the date at the top of the calendar. */
 var displayDate = function () {
   var prettyDate = moment().format("[Today is] dddd, MMMM Do YYYY, ha");
   moment(prettyDate).toString;
@@ -6,6 +7,7 @@ var displayDate = function () {
   todayDiv.text(prettyDate);
 };
 
+/* Funciton to conditionally update color styles based on the current time. */
 var colorChange = function () {
   $(".hour").each(function (_index, element) {
     var calendarHrString = $(this).attr('id');
@@ -25,6 +27,7 @@ var colorChange = function () {
   })
 };
 
+/* Pull text entries from localStorage and populate them in their respective hourly rows. */
 var populateCalendar = function () {
   $("#9").siblings("textarea").val(localStorage.getItem("9"));
   $("#10").siblings("textarea").val(localStorage.getItem("10"));
@@ -37,6 +40,7 @@ var populateCalendar = function () {
   $("#17").siblings("textarea").val(localStorage.getItem("17"));
 };
 
+/* Text content pushed to localStorage when user presses the blue button. */
 $(".saveBtn").on("click", function (event) {
   event.preventDefault();
   var eventText = $(this).siblings("textarea").val();

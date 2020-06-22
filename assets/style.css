@@ -90,23 +90,3 @@ textarea {
   color: white;
   font-weight: bold;
 }
-
-@media (max-width: 767.98px) {
-  .row {
-    justify-content: center;
-  }
-  .hour {
-    display: block;
-    border-radius: 15px;
-  }
-  .time-block {
-    align-content: center;
-  }
-  .saveBtn {
-    padding: 0px;
-    width: 50%;
-    border-radius: 15px;
-    align-items: center;
-    font-size: 1.5em;
-  }
-}
