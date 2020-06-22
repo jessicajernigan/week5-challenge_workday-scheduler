@@ -7,14 +7,13 @@ var displayDate = function () {
 };
 
 var colorChange = function () {
-  $(".hour").each(function (_index, element) { 
+  $(".hour").each(function (_index, element) {
     var calendarHrString = $(this).attr('id');
     var currentHrString = moment().format("H");
 
     calendarHr = parseInt(calendarHrString);
     currentHr = parseInt(currentHrString);
-
-    console.log({calendarHr, currentHr});
+    // console.log({ calendarHr, currentHr });
 
     if (currentHr > calendarHr) {
       $(element).siblings("textarea").addClass("past")
@@ -25,7 +24,6 @@ var colorChange = function () {
     }
   })
 };
-
 
 var populateCalendar = function () {
   $("#9").siblings("textarea").val(localStorage.getItem("9"));
@@ -39,13 +37,11 @@ var populateCalendar = function () {
   $("#17").siblings("textarea").val(localStorage.getItem("17"));
 };
 
-
-
-$(".saveBtn").on("click", function(event) {
+$(".saveBtn").on("click", function (event) {
   event.preventDefault();
   var eventText = $(this).siblings("textarea").val();
   var eventHr = $(this).siblings(".time-block").attr("id");
-  console.log(eventText, eventHr);
+  // console.log(eventText, eventHr);
 
   localStorage.setItem(eventHr, eventText);
 });
